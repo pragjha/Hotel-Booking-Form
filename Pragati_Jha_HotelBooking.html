@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hotel Booking</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+    table{
+        margin: 0 auto;
+        text-align: left;
+        padding: 10px;
+    }
+    td{
+        padding: 8px;;
+    }
+    h3,h1{
+       color: red;
+    }
+    #red{
+        background-color: red;
+        color: white;
+    }
+    form{
+        border-width: 1px;;
+    }
+</style>
+<script>
+    function validate(){
+        var nameValidater=/^[a-zA-Z]{3,10}$/;
+        var holdernameValidater=/^[a-zA-Z]{3,15}$/;
+        var emailValidater=/^[a-zA-Z]+@[a-zA-Z]+(\\.com)||(\\.org)$/;
+        var numberValidater=/^[7-9]{1}[0-9]{9}$/;
+        var cardnumberValidater=/^[0-9]{16}$/;
+        var cvvValidator=/^[0-9]{3}$/;
+        var yearValidator=/^[0-9]{4}$/;
+        var monthCheck;
+        var cityCheck=document.getElementById("city").value=="Select City"?false:true;
+        var stateCheck=document.getElementById("state").value=="Select State"?false:true;
+        var month=document.getElementById("month").value.split("/");
+        if(parseInt(month[0])>0 && parseInt(month[0])<=31 && parseInt(month[1])>0 && parseInt(month[0])<=12){
+            monthCheck=true;
+        }else{
+            monthCheck=false;
+        }
+        var fname=document.getElementById("fname").value;
+        var lname=document.getElementById("lname").value;
+        var email=document.getElementById("mail").value;
+        var number=parseInt(document.getElementById("number").value);
+        var holderName=document.getElementById("name").value;
+        var cardnum=parseInt(document.getElementById("cardnumber").value);
+        var cvv=parseInt(document.getElementById("cvv").value);
+        var year=parseInt(document.getElementById("year").value);
+        console.log(holdernameValidater.test(holderName));
+        if(nameValidater.test(fname) && nameValidater.test(lname) && emailValidater.test(email)
+        && numberValidater.test(number) && cityCheck && stateCheck && holdernameValidater.test(holderName)
+        && cardnumberValidater.test(cardnum) && cvvValidator.test(cvv) && monthCheck && yearValidator.test(year)){
+            return true;
+        }else{
+            alert("Fill the form Correctly");
+            return false;
+        }
+    }
+</script>
+<body>
+    <h1><i>Hotel Booking Form</i></h1>
+        <form action="conformation.html">
+            <table>
+                <h3>Personal Details</h3>
+                <tr>
+                    <td>First Name*</td>
+                    <td>
+                        <input type="text" name="" id="fname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name*</td>
+                    <td>
+                        <input type="text" name="" id="lname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email*</td>
+                    <td>
+                        <input type="text" name="" id="mail">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mobile no.*</td>
+                    <td>
+                        <input type="text" name="" id="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>
+                        <textarea name="" id="adddress" cols="30" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City*</td>
+                    <td>
+                        <select name="" id="city">
+                            <option value="Select City">Select City</option>
+                            <option value="New Delhi">New Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>State*</td>
+                    <td>
+                        <select name="" id="state">
+                            <option value="Select State">Select State</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Karnataka">Karnataka</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Guest Staying*</td>
+                    <td>
+                        <select name="nguest" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <h5><i>Note: *Maximum 3 members can share one room</i></h5>
+            <table>
+                <h3>Payment Details</h3>
+                <tr>
+                    <td>Card Holder Name*</td>
+                    <td>
+                        <input type="text" name="" id="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Debit Card Number*</td>
+                    <td>
+                        <input type="text" name="" id="cardnumber">
+                    </td>
+                </tr>
+                <tr>
+                    <td>CVV*</td>
+                    <td>
+                        <input type="text" name="" id="cvv">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expiration Month*</td>
+                    <td>
+                        <input type="text" name="" id="month">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expiration Year*</td>
+                    <td>
+                        <input type="text" name="" id="year">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Confirm Booking" onclick="return validate()" id="red">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+</body>
+</html>
